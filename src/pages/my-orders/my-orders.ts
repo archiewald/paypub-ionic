@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Order } from "../products/products";
 import { OrderService } from "../../services/order";
 import { AuthService } from "../../services/auth";
+//this is just to check if I made my first commit
 
 @IonicPage()
 @Component({
