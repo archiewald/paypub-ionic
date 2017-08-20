@@ -1,0 +1,76 @@
+
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>{{chosenPub.name}}</ion-title>
+  </ion-navbar>
+   <ion-toolbar no-border-top>
+    <ion-segment>
+      <ion-segment-button (click)="showDrinksClick()" value="showDrinks">
+        NAPOJE
+      </ion-segment-button>
+      <ion-segment-button (click)="showFoodsClick()" value="showFood">
+        JEDZENIE
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item-group [hidden]="!showDrinks" *ngFor="let category of drinkCategories">
+      <ion-item-divider color="light">{{category}}</ion-item-divider>
+      <ng-container *ngFor="let drink of chosenPub.drinks">
+        <ion-item *ngIf="drink.category==category">
+          <ion-icon large name="beer" item-left></ion-icon>
+          <h2>{{drink.name}}</h2>
+          <p>{{drink.price}} zł</p>
+          <ion-icon item-end name="add-circle"
+          (click)="order.addProduct(drink, 0)">
+          </ion-icon>
+          <h2 item-end class="quantity">
+            {{order.getProductQuantity(drink)}}
+          </h2>
+          <ion-icon item-end name="remove-circle"
+          (click)="order.removeProduct(drink)">
+          </ion-icon>
+        </ion-item>
+      </ng-container>
+  </ion-item-group>
+
+  <ion-list [hidden]="!showFoods">
+    <ion-item *ngFor="let food of chosenPub.foods">
+      <ion-icon large name="restaurant" item-left></ion-icon>
+      <h2>{{food.name}}</h2>
+      <p>{{food.price}} zł</p>
+      <ion-icon item-end name="add-circle"
+      (click)="order.addProduct(food, 1)">
+      </ion-icon>
+      <h2 item-end class="quantity">{{order.getProductQuantity(food)}}</h2>
+      <ion-icon item-end name="remove-circle"
+      (click)="order.removeProduct(food)">
+      </ion-icon>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>{{order.sum}} zł</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-right
+        [disabled]="isOrderEmpty()"
+        [navPush]="orderPage"
+        [navParams]="order">
+        DALEJ
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+  
+  <!--<div text-center>
+    <h3><button ion-button
+      [navPush]="orderPage"
+      [navParams]="order">DALEJ</button> {{order.sum}} zł</h3>
+   </div>-->
+</ion-footer>

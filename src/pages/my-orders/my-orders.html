@@ -1,0 +1,25 @@
+<ion-header>
+  
+    <ion-navbar>
+      <ion-buttons start>
+        <button ion-button icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>Zamówienia</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content padding>
+    <ion-card *ngFor="let order of orders">
+      <ion-item-group>
+        <ion-item *ngFor="let orderRow of order.orderRows">
+          <h2>{{orderRow.productName}}</h2>
+          <p item-end>{{orderRow.quantity}} x {{orderRow.price}} zł</p>
+        </ion-item>
+      <ion-item-divider color="light"><h3 item-end>Suma: {{order.sum}} zł</h3></ion-item-divider>
+      </ion-item-group>
+    </ion-card>
+</ion-content>

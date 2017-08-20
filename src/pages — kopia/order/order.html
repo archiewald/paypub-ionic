@@ -1,0 +1,59 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Twoje zamówienie</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-item-group>
+      <ion-item *ngFor="let orderRow of order.orderRows">
+        <h2>{{orderRow.productName}}</h2>
+        <p item-end>{{orderRow.quantity}} x {{orderRow.price}} zł</p>
+      </ion-item>
+    <ion-item-divider color="light"><h3 item-end>Suma: {{order.sum}} zł</h3></ion-item-divider>
+    </ion-item-group>
+  </ion-card>
+
+  <form (submit)="doSubmit($event)" [formGroup]="langForm">
+    <ion-list radio-group formControlName="langs">
+
+      <ion-list-header>
+        Forma płatności
+      </ion-list-header>
+
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="img/mastercard_logo.png">
+        </ion-thumbnail>
+        <ion-label>XXXX-XXXX-XXXX-2543</ion-label>
+        <ion-radio value="card1" checked="true"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Dodaj nową</ion-label>
+        <ion-radio value="newcard"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </form>
+
+</ion-content>
+
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons end>
+      <button ion-button icon-right>
+        ZREALIZUJ ZAMÓWIENIE
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+
+
+

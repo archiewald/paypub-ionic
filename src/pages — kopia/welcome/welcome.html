@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>paypub</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding class="Absolute-Center">
+  <h2 text-center style="padding-top: 80px"> Witaj w paypub! </h2>
+  <ion-list style="padding-top: 30px">
+
+  <ion-item>
+    <ion-label fixed>Login:</ion-label>
+    <ion-input type="text" value=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>Hasło:</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
+
+</ion-list>
+
+<div text-center style="padding-top: 30px">
+  <button ion-button [navPush]="pubsPage">Zaloguj</button>
+</div>
+
+</ion-content>

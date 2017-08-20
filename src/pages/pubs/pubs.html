@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Miejsca</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  
+  <ion-card
+      *ngFor="let pub of pubCollection"
+      [navPush]="productsPage"
+      [navParams]="pub">
+    <img src="img/{{pub.picture}}"/>
+    <ion-item>
+    <ion-icon name="compass" large item-start></ion-icon>
+    <h2>{{pub.name}}</h2>
+    <p>{{pub.address}}, {{pub.city}}</p>
+    </ion-item>
+  </ion-card>
+</ion-content>

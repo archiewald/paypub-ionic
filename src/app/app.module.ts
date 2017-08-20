@@ -3,27 +3,50 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { WelcomePage } from '../pages/welcome/welcome';
+import { PubsPage } from '../pages/pubs/pubs';
+import { ProductsPage } from '../pages/products/products';
+import { OrderPage } from '../pages/order/order';
+import { SigninPage } from '../pages/signin/signin';
+import { SignupPage } from '../pages/signup/signup';
+import { MyOrdersPage } from '../pages/my-orders/my-orders';
+import { AuthService } from '../services/auth';
+import { OrderService } from '../services/order';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    WelcomePage,
+    PubsPage,
+    ProductsPage,
+    OrderPage,
+    SigninPage,
+    SignupPage,
+    MyOrdersPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    WelcomePage,
+    PubsPage,
+    ProductsPage,
+    OrderPage,
+    SigninPage,
+    SignupPage,
+    MyOrdersPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    AuthService,
+    OrderService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

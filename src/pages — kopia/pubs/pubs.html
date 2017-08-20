@@ -1,0 +1,50 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Miejsca</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  
+  <ion-card
+      *ngFor="let pub of pubCollection"
+      [navPush]="productsPage"
+      [navParams]="pub">
+    <img src="img/{{pub.picture}}"/>
+    <ion-item>
+    <!--<button ion-button icon-left item-start>
+    <ion-icon name="compass"></ion-icon>
+    200m
+    </button>-->
+    <ion-icon name="compass" large item-start></ion-icon>
+    <h2>{{pub.name}}</h2>
+    <p>{{pub.address}}, {{pub.city}}</p>
+    </ion-item>
+    <!--<ion-card-content>
+      <ion-icon name="compass"></ion-icon>
+      <ion-card-title>
+        {{pub.name}}
+      </ion-card-title>
+      <p>
+        {{pub.address}}, {{pub.city}} 
+      </p>
+    </ion-card-content>-->
+  </ion-card>
+
+  <!--<h3 text-center>Gdzie jestes?</h3>
+  <ion-list>
+    <button ion-item
+      *ngFor="let pub of pubCollection"
+      [navPush]="productsPage"
+      [navParams]="pub"
+      >
+      <ion-icon large name="compass" item-left></ion-icon>
+      <h2> {{pub.name}} </h2>
+      <p> {{pub.address}}, {{pub.city}} </p>
+    </button>
+  </ion-list>-->
+</ion-content>
